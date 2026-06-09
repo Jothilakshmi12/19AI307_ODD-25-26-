@@ -2,19 +2,19 @@
 
 
 ## AIM:
-To write a Java program that defines an enum Department with constants CS, IT, and ECE, each storing its full form using a constructor, and displays the corresponding full form based on user input.
+To write a Java program that creates an inner class and accesses its method from the outer class.
 
 ## ALGORITHM :
 
 1.Start the program.
 
-2.Define an enum Department with constants CS, IT, and ECE, each having a full form string.
+2.Create an outer class and define an inner class inside it.
 
-3.Read the department code from the user.
+3.Read the user's name as input.
 
-4.Compare the input with the enum constants and display the corresponding full form if valid.
+4.Create an object of the inner class through the outer class and call its method.
 
-5.If the input is invalid, display an error message and stop the program.
+5.Display the greeting message and stop the program.
 
 
 
@@ -32,35 +32,24 @@ RegisterNumber:  212223110017
 ```
 import java.util.Scanner;
 
-enum Department {
-    CS("Computer Science"),
-    IT("Information Technology"),
-    ECE("Electronics and Communication Engineering");
+class prog {
 
-    private String fullForm;
-
-    Department(String fullForm) {
-        this.fullForm = fullForm;
+    class Inner {
+        void display(String name) {
+            System.out.println("Hello, " + name + "! This message is from the Inner Class.");
+        }
     }
 
-    public String getFullForm() {
-        return fullForm;
-    }
-}
-
-public class Main {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
-        String input = sc.nextLine();
+        String name = sc.nextLine();
 
-        try {
-            Department dept = Department.valueOf(input.toUpperCase());
-            System.out.println("Full Form: " + dept.getFullForm());
-        } 
-        catch (IllegalArgumentException e) {
-            System.out.println("Invalid department code entered.");
-        }
+        prog obj = new prog();
+        prog.Inner in = obj.new Inner();
+
+        in.display(name);
     }
 }
 ```
@@ -73,8 +62,9 @@ public class Main {
 ## OUTPUT:
 
 
-<img width="1027" height="252" alt="image" src="https://github.com/user-attachments/assets/845bc9b6-7f7d-4327-930d-45e420894e23" />
+<img width="1013" height="207" alt="image" src="https://github.com/user-attachments/assets/f9dd9863-0f06-4b21-b595-f7d8acf0181a" />
+
 
 ## RESULT:
 
-Thus, the program successfully uses an enum with a constructor to store department full forms and displays the appropriate full form or an error message based on the user's input.
+Thus, the program successfully creates an inner class and accesses it from the outer class to display the required message.
